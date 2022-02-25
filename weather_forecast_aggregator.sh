@@ -3,7 +3,7 @@
 # Weather forecast aggregator script
 ################################################################################
 #
-# This script will download weather forcast PDFs defined in FORECAST_PLACES
+# This script will download weather forecast PDFs defined in FORECAST_PLACES
 # array and will combine the forecasts into a single timestamped JPEG image.
 # This script is designed to work with weather forecast PDFs provided by
 # yr.no service.
@@ -18,6 +18,19 @@
 # underscore and dash (no spaces allowed).
 # In order to remove a place just comment out or completely delete relevant
 # FORECAST_PLACES array entry.
+#
+#
+# Prerequisites
+# -------------
+#
+# This script relies on [ImageMagick](https://www.imagemagick.org/) package.
+# Install `imagemagick` package and make sure that the
+# `/etc/ImageMagick-6/policy.xml` has the following line:
+#
+#       <policy domain="coder" rights="read | write" pattern="PDF" />
+#
+# Usage
+# -----
 #
 # Run the script without any parameters.
 #
