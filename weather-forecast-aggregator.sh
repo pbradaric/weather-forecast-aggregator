@@ -109,7 +109,13 @@ rm weather_forecast_*.pdf 2>/dev/null
 #
 # Launch image viewer with final result (if possible)
 # ------------------------------------------------------------------------------
+# In Linux
 if command -v eog &> /dev/null
 then
     eog $OUTPUT_FILENAME
+fi
+# In WSL instance
+if uname -a | grep "Microsoft" > /dev/null
+then
+    cmd.exe /C start $OUTPUT_FILENAME
 fi
