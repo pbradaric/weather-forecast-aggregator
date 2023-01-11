@@ -84,15 +84,21 @@ for idx in "${!FORECAST_PLACES[@]}"; do
     _LONG_1_JPG_NAME="long_weather_forecast_1_${_JPG_NAME}"
     _LONG_2_JPG_NAME="long_weather_forecast_2_${_JPG_NAME}"
     _LONG_3_JPG_NAME="long_weather_forecast_3_${_JPG_NAME}"
+    _LONG_4_JPG_NAME="long_weather_forecast_4_${_JPG_NAME}"
+    _LONG_5_JPG_NAME="long_weather_forecast_5_${_JPG_NAME}"
+    _LONG_6_JPG_NAME="long_weather_forecast_6_${_JPG_NAME}"
     _FINAL_JPG_NAME="final_weather_forecast_${_JPG_NAME}"
     FORECAST_FILENAMES_STRING+="${_FINAL_JPG_NAME} "
     wget ${PLACE[1]} -O ${_PDF_NAME}
     convert -flatten -density 300 -quality 100 ${_PDF_NAME} ${_JPG_NAME} && \
-        convert ${_JPG_NAME} -crop 2430x1380+30+240 ${_METEOGRAM_JPG_NAME} && \
-        convert ${_JPG_NAME} -crop 260x1380+115+1780 ${_LONG_1_JPG_NAME} && \
-        convert ${_JPG_NAME} -crop 350x1380+860+1780 ${_LONG_2_JPG_NAME} && \
-        convert ${_JPG_NAME} -crop 680x1380+1710+1780 ${_LONG_3_JPG_NAME} && \
-        convert ${_METEOGRAM_JPG_NAME} ${_LONG_1_JPG_NAME} ${_LONG_2_JPG_NAME} ${_LONG_3_JPG_NAME} +append ${_FINAL_JPG_NAME} && \
+        convert ${_JPG_NAME} -crop 2430x1480+30+240 ${_METEOGRAM_JPG_NAME} && \
+        convert ${_JPG_NAME} -crop 260x1380+115+1880 ${_LONG_1_JPG_NAME} && \
+        convert ${_JPG_NAME} -crop 100x1380+750+1880 ${_LONG_2_JPG_NAME} && \
+        convert ${_JPG_NAME} -crop 100x1380+950+1880 ${_LONG_3_JPG_NAME} && \
+        convert ${_JPG_NAME} -crop 200x1380+1595+1880 ${_LONG_4_JPG_NAME} && \
+        convert ${_JPG_NAME} -crop 200x1380+1880+1880 ${_LONG_5_JPG_NAME} && \
+        convert ${_JPG_NAME} -crop 200x1380+2220+1880 ${_LONG_6_JPG_NAME} && \
+        convert ${_METEOGRAM_JPG_NAME} ${_LONG_1_JPG_NAME} ${_LONG_2_JPG_NAME} ${_LONG_3_JPG_NAME} ${_LONG_4_JPG_NAME} ${_LONG_5_JPG_NAME} ${_LONG_6_JPG_NAME} +append ${_FINAL_JPG_NAME} && \
         convert ${_FINAL_JPG_NAME} -resize 1560x ${_FINAL_JPG_NAME}
 done
 convert $FORECAST_FILENAMES_STRING -append $OUTPUT_FILENAME
